@@ -158,6 +158,10 @@ vérifiant que patte.value n'est pas nulle
 
 ## Explications et réflexions sur le code
 
+**À quoi sert l'option immediate: true dans le watch ? Que se passe-t-il si on l'enlève ou si on met immediate: false ?**
+immediate: true fait en sorte de forcer l'exécution de l'observateur watsh, si on met immediate:false, l'affichage des trus/false selon les questions
+s'affiche sous forme de liste vide, c'est à dire que tant que l'utilisateur ne saisit pas une réponse, le watcher ne ns'execute pas, l'execution 
+n'est donc plus immédiate au début du quizz, mais se met en marque au fur et a mesur qu'une question est répondue
 
 ## **Suite du projet**
 

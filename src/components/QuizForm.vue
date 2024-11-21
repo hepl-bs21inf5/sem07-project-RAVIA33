@@ -7,7 +7,7 @@ import QuestionText from '@/components/QuestionText.vue'
 const cheval = ref<string | null>(null)
 const patte = ref<string | null>(null)
 const capitale = ref<string | null>(null)
-const checkedResponse = ref([])
+const correctAnswers = ref<boolean[]>([])
 const filled = computed<boolean>(() => cheval.value !== null && capitale.value !== null)
 
 function submit(event: Event): void {
@@ -42,7 +42,8 @@ function renitialiser(): void {
   <form @submit="submit">
     <QuestionRadio
       id="cheval"
-      v-model="cheval"
+      v-model="correctAnswers[0]"
+      answer = "blanc"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       :options="[
         { value: 'blanc', text: 'Blanc' },
@@ -54,21 +55,17 @@ function renitialiser(): void {
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit"></button>
     <QuestionText
       id="patte"
-      v-model="patte"
+      v-model="correctAnswers[1]"
+      answer ="4"
       text="Combien de pattes a un chat ?"
       placeholder="Veuillez choisir un nombre"
     />
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit"></button>
-    <QuestionText
-      id="patte"
-      v-model="patte"
-      text="Combien de pattes a un chien"
-      placeholder="Veuillez choisir un nombre"
-    />
-
+   
     <QuestionRadio
       id="capitale"
-      v-model="capitale"
+      v-model="correctAnswers[2]"
+      answer = "berne"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
         { value: 'lausanne', text: 'Lausanne' },
@@ -81,5 +78,6 @@ function renitialiser(): void {
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
 
     <button class="btn btn-primary" @click="renitialiser">Rénitialiser</button>
+    <div>Réponses {{ correctAnswers }}</div>
   </form>
 </template>
