@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -24,8 +24,16 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/about">
-            <i class="bi bi-house-door"></i>
+              <i class="bi bi-house-door"></i>
               À propos
+            </RouterLink>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/trivia">
+              <i class="bi bi-question"></i>
+              Trivia
             </RouterLink>
           </li>
         </ul>
