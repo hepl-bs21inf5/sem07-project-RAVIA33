@@ -9,8 +9,11 @@ const patte = ref<string | null>(null)
 const capitale = ref<string | null>(null)
 const correctAnswers = ref<boolean[]>([])
 const filled = computed<boolean>(() => cheval.value !== null && capitale.value !== null)
+const score = computed<number>(() => correctAnswers.value.filter((value) => value).length);
+const totalScore = computed<number>(() => correctAnswers.value.length);
 
-function submit(event: Event): void {
+
+/*function submit(event: Event): void {
   event.preventDefault()
   let points = 0
   if (cheval.value === 'blanc') {
@@ -28,8 +31,8 @@ function submit(event: Event): void {
     } else {
       alert(`Vous avez fait ${points} point sur 3 !`)
     }
-  }
-}
+  }*/
+
 
 function renitialiser(): void {
   cheval.value = null
@@ -39,7 +42,7 @@ function renitialiser(): void {
 </script>
 
 <template>
-  <form @submit="submit">
+  <form>
     <QuestionRadio
       id="cheval"
       v-model="correctAnswers[0]"
@@ -79,5 +82,6 @@ function renitialiser(): void {
 
     <button class="btn btn-primary" @click="renitialiser">Rénitialiser</button>
     <div>Réponses {{ correctAnswers }}</div>
+    <div>Score : {{ score }} / {{ totalScore }}</div>
   </form>
 </template>

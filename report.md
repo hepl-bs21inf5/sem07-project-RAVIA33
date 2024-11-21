@@ -142,26 +142,30 @@ vérifiant que patte.value n'est pas nulle
 
 ## Temps passé
 
-| **Tâche**             | **Temps estimé** | **Temps passé** | **Remarque** |
-| --------------------- | ---------------- | --------------- | ------------ |
-| Réponse               | 2h               |                 |              |
-| Réponse aux questions | 30 min           |                 |              |
-| Score                 | 1h30             |                 |              |
-| Réponse aux questions | 1h               |                 |              |
-|                       |                  |                 |              |
-|                       |                  |                 |              |
+| **Tâche**             | **Temps estimé** | **Temps passé** | **Remarque**                                          |
+| --------------------- | ---------------- | --------------- | ----------------------------------------------------- |
+| Réponse               | 2h               | 1h30            | Les boutons ne fonctionnent plus, mais pas très grave |
+| Réponse aux questions | 30 min           |                 |                                                       |
+| Score                 | 1h30             |                 |                                                       |
+| Réponse aux questions | 1h               |                 |                                                       |
+|                       |                  |                 |                                                       |
+|                       |                  |                 |                                                       |
 
 ## Difficultés rencontrées et solutions
 
-| **Tâches** | **Difficultés rencontrées** | **Solutions trouvées** |
-| ---------- | --------------------------- | ---------------------- |
+| **Tâches** | **Difficultés rencontrées**  | **Solutions trouvées**             |
+| ---------- | ---------------------------- | ---------------------------------- |
+| Reponse    | ref et watch ne marchent pas | Bien les importer en début de code |
 
 ## Explications et réflexions sur le code
 
 **À quoi sert l'option immediate: true dans le watch ? Que se passe-t-il si on l'enlève ou si on met immediate: false ?**
 immediate: true fait en sorte de forcer l'exécution de l'observateur watsh, si on met immediate:false, l'affichage des trus/false selon les questions
-s'affiche sous forme de liste vide, c'est à dire que tant que l'utilisateur ne saisit pas une réponse, le watcher ne ns'execute pas, l'execution 
+s'affiche sous forme de liste vide, c'est à dire que tant que l'utilisateur ne saisit pas une réponse, le watcher ne ns'execute pas, l'execution
 n'est donc plus immédiate au début du quizz, mais se met en marque au fur et a mesur qu'une question est répondue
+
+**Proposer une autre manière de calculer le score et comparer les deux méthodes**
+
 
 ## **Suite du projet**
 
