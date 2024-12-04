@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { watch } from 'vue';
-import { ref } from 'vue';
+import { watch } from 'vue'
+import { ref } from 'vue'
 import { defineModel, defineProps, type PropType } from 'vue'
+import { QuestionState } from '@/utils/models'
 
-const model = defineModel<boolean>()
+const model = defineModel<QuestionState>()
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
@@ -16,10 +17,21 @@ const value = ref<string | null>(null)
 watch(
   value,
   (newValue) => {
-    model.value = newValue === props.answer
+    if (newValue === null) {
+      model.value = QuestionState.Empty
+    } else {
+      model.value = QuestionState.Fill
+    }
   },
-  { immediate:true},
+  { immediate: true },
 )
+watch(model, (newModel) => {
+  if (newModel === QuestionState.Submit) {
+    model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
+  } else if (newModel === QuestionState.Empty) {
+    value.value = null
+  }
+})
 </script>
 
 <template>

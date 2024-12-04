@@ -2,15 +2,21 @@
 import { computed, ref } from 'vue'
 import QuestionRadio from '@/components/QuestionRadio.vue'
 import QuestionText from '@/components/QuestionText.vue'
+import { QuestionState } from '@/utils/models'
 
 
 const cheval = ref<string | null>(null)
 const patte = ref<string | null>(null)
 const capitale = ref<string | null>(null)
-const correctAnswers = ref<boolean[]>([])
+const questionStates = ref<QuestionState[]>([])
 const filled = computed<boolean>(() => cheval.value !== null && capitale.value !== null)
-const score = computed<number>(() => correctAnswers.value.filter((value) => value).length);
-const totalScore = computed<number>(() => correctAnswers.value.length);
+  const score = computed<number>(
+  () =>
+    questionStates.value
+      .filter(state => state === QuestionState.Correct)
+      .length,
+)
+const totalScore = computed<number>(() => questionStates.value.length)
 
 
 /*function submit(event: Event): void {
@@ -45,7 +51,7 @@ function renitialiser(): void {
   <form>
     <QuestionRadio
       id="cheval"
-      v-model="correctAnswers[0]"
+      v-model="questionStates[0]"
       answer = "blanc"
       text="De quelle couleur est le cheval blanc de Napoléon ?"
       :options="[
@@ -58,7 +64,7 @@ function renitialiser(): void {
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit"></button>
     <QuestionText
       id="patte"
-      v-model="correctAnswers[1]"
+      v-model="questionStates[1]"
       answer ="4"
       text="Combien de pattes a un chat ?"
       placeholder="Veuillez choisir un nombre"
@@ -67,7 +73,7 @@ function renitialiser(): void {
    
     <QuestionRadio
       id="capitale"
-      v-model="correctAnswers[2]"
+      v-model="questionStates[2]"
       answer = "berne"
       text="Quelle est la capitale de la Suisse ?"
       :options="[
@@ -81,7 +87,7 @@ function renitialiser(): void {
     <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
 
     <button class="btn btn-primary" @click="renitialiser">Rénitialiser</button>
-    <div>Réponses {{ correctAnswers }}</div>
+    <div>Debug états : {{ questionStates }}</div>
     <div>Score : {{ score }} / {{ totalScore }}</div>
   </form>
 </template>

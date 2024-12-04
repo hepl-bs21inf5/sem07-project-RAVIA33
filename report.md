@@ -146,7 +146,7 @@ vérifiant que patte.value n'est pas nulle
 | --------------------- | ---------------- | --------------- | ----------------------------------------------------- |
 | Réponse               | 2h               | 1h30            | Les boutons ne fonctionnent plus, mais pas très grave |
 | Réponse aux questions | 30 min           |                 |                                                       |
-| Score                 | 1h30             |                 |                                                       |
+| Score                 | 1h30             | 1h30            |                                                       |
 | Réponse aux questions | 1h               |                 |                                                       |
 |                       |                  |                 |                                                       |
 |                       |                  |                 |                                                       |
@@ -166,7 +166,46 @@ n'est donc plus immédiate au début du quizz, mais se met en marque au fur et a
 
 **Proposer une autre manière de calculer le score et comparer les deux méthodes**
 
-
 ## **Suite du projet**
 
 option.shift.f
+
+# Projet semmaine : 4 - 5
+
+[Schmidt Rava ]
+
+# Temps passé
+
+| **Tâches**                | **Temps estimé** | **Temps passé** | **Remarque** |
+| ------------------------- | ---------------- | --------------- | ------------ |
+| États                     | 1h30             | 1h15            |              |
+| Question Rapport 1        | 30 min           | 15 min             |              |
+| Question Rapport 2 30 min |                  |                 |              |
+| Boutons                   | 1h30             |                 |              |
+| Réponses immuables        | 1h               |                 |              |
+|                           |                  |                 |              |
+
+| **Tâches**         | **Difficultés rencontrées**                                  | **Solutions trouvées** |
+| ------------------ | ------------------------------------------------------------ | ---------------------- |
+| Etats              | "from '@/utils/models'" souligné en rouge dans questionRadio |                        |
+| Question Rapport 1 |                                                              |                        |
+| Boutons            |                                                              |                        |
+| Réponses immuables |                                                              |                        |
+|                    |                                                              |                        |
+
+## Explications et réflexions sur le code
+
+**Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?**
+
+model.value =
+  value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+
+Remplacé par :
+    if (value.value === props.answer) {
+    model.value = QuestionState.Correct;
+    } else {
+    model.value = QuestionState.Wrong;
+    }
+
+**Comment pourrait-on réécrire autrement la logique du watch sur value ?**
+utiliser computed ? à repondre...
