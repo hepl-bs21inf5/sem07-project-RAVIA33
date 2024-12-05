@@ -35,10 +35,9 @@ watch(model, (newModel) => {
   if (newModel === QuestionState.Submit) {
     model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
     /*Si l'état est Submit, il deviendra Correct si la réponse est juste et Wrong sinon*/
-  }
-  /*else if (newModel === QuestionState.Empty) {
+  } else if (newModel === QuestionState.Empty) {
     value.value = null
-  }*/
+  }
 })
 </script>
 

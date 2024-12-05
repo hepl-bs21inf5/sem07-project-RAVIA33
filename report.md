@@ -176,19 +176,20 @@ option.shift.f
 
 # Temps passé
 
-| **Tâches**                | **Temps estimé** | **Temps passé** | **Remarque** |
-| ------------------------- | ---------------- | --------------- | ------------ |
-| États                     | 1h30             | 1h15            |              |
-| Question Rapport 1        | 30 min           | 15 min             |              |
-| Question Rapport 2 30 min |                  |                 |              |
-| Boutons                   | 1h30             |                 |              |
-| Réponses immuables        | 1h               |                 |              |
-|                           |                  |                 |              |
+| **Tâches**         | **Temps estimé** | **Temps passé** | **Remarque** |
+| ------------------ | ---------------- | --------------- | ------------ |
+| États              | 1h30             | 1h15            |              |
+| Question Rapport 1 | 30 min           | 15 min          |              |
+| Question Rapport 2 | 30 min           |                 |              |
+| Boutons            | 1h30             | 1h05            |              |
+| Réponses immuables | 1h               |                 |              |
+|                    |                  |                 |              |
 
 | **Tâches**         | **Difficultés rencontrées**                                  | **Solutions trouvées** |
 | ------------------ | ------------------------------------------------------------ | ---------------------- |
 | Etats              | "from '@/utils/models'" souligné en rouge dans questionRadio |                        |
 | Question Rapport 1 |                                                              |                        |
+| Question rapport 2 |                                                              |                        |
 | Boutons            |                                                              |                        |
 | Réponses immuables |                                                              |                        |
 |                    |                                                              |                        |
@@ -198,14 +199,14 @@ option.shift.f
 **Comment pourrait-on réécrire la ligne suivante sans l'opérateur ternaire (avec des if et else) ?**
 
 model.value =
-  value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
+value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong;
 
 Remplacé par :
-    if (value.value === props.answer) {
-    model.value = QuestionState.Correct;
-    } else {
-    model.value = QuestionState.Wrong;
-    }
+if (value.value === props.answer) {
+model.value = QuestionState.Correct;
+} else {
+model.value = QuestionState.Wrong;
+}
 
 **Comment pourrait-on réécrire autrement la logique du watch sur value ?**
 utiliser computed ? à repondre...

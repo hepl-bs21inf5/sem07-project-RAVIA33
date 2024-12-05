@@ -7,9 +7,11 @@ import { QuestionState } from '@/utils/models'
 
 const cheval = ref<string | null>(null)
 const patte = ref<string | null>(null)
-const capitale = ref<string | null>(null)
+const capitale = ref<string | null>(null) 
 const questionStates = ref<QuestionState[]>([])
-const filled = computed<boolean>(() => cheval.value !== null && capitale.value !== null)
+const filled = computed<boolean>(() => questionStates.value.every(state => state === QuestionState.Fill))
+const submitted = computed<boolean>(() => questionStates.value.every(state => state === QuestionState.Correct || state === QuestionState.Wrong))
+/*const filled = computed<boolean>(() => cheval.value !== null && capitale.value !== null)*/
   const score = computed<number>(
   () =>
     questionStates.value
@@ -17,6 +19,13 @@ const filled = computed<boolean>(() => cheval.value !== null && capitale.value !
       .length,
 )
 const totalScore = computed<number>(() => questionStates.value.length)
+
+
+function submit(event: Event): void {
+  event.preventDefault()
+  questionStates.value = questionStates.value.map(() => QuestionState.Submit) 
+  /* Map parcoursles questionstates et leur donne la valeur Submit */
+}
 
 
 /*function submit(event: Event): void {
@@ -40,10 +49,12 @@ const totalScore = computed<number>(() => questionStates.value.length)
   }*/
 
 
-function renitialiser(): void {
-  cheval.value = null
+function renitialiser(event : Event): void {
+  event.preventDefault()
+  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
+  /*cheval.value = null
   patte.value = null
-  capitale.value = null
+  capitale.value = null*/
 }
 </script>
 
@@ -84,10 +95,11 @@ function renitialiser(): void {
       ]"
     />
 
-    <button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>
-
+    <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit" >Terminer</button>
+    <!--<button class="btn btn-primary" :class="{ disabled: !filled }" type="submit">Terminer</button>-->
     <button class="btn btn-primary" @click="renitialiser">Rénitialiser</button>
     <div>Debug états : {{ questionStates }}</div>
-    <div>Score : {{ score }} / {{ totalScore }}</div>
+    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
+    <!--<div>Score : {{ score }} / {{ totalScore }}</div>--> 
   </form>
 </template>
