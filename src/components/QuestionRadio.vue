@@ -51,6 +51,11 @@ watch(model, (newModel) => {
       type="radio"
       :name="props.id"
       :value="option.value"
+      :disabled="
+      model === QuestionState.Submit || 
+      model === QuestionState.Correct || 
+      model === QuestionState.Wrong
+    "
     />
     <label class="form-check-label" :for="`${props.id}-${option.value}`">
       {{ option.text }}

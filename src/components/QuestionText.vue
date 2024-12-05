@@ -38,5 +38,10 @@ watch(model, (newModel) => {
   <label for="props.id" class="form-label">
     {{ props.text }}
   </label>
-  <input id="props.id" v-model="value" class="form-control" :placeholder="props.placeholder" />
+  <input id="props.id" v-model="value" class="form-control" :placeholder="props.placeholder"
+  :disabled="
+      model === QuestionState.Submit || 
+      model === QuestionState.Correct || 
+      model === QuestionState.Wrong
+    " />
 </template>
