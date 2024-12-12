@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import { ref, watch, type PropType } from 'vue'
-import { QuestionState } from '@/utils/models'
+import { ref, computed, watch, type PropType } from 'vue'
+import { QuestionState } from '../utils/models'
 
+/* Définition du modèle, de la proposition et de la valeur*/
 const model = defineModel<QuestionState>()
-/*Comme modèleest maintenant de type boolean, on pourra faire indiquer à chaque question si la réponse est correct ou non */
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   answer: { type: String, required: true } /*answer contient la bonne réponse*/,
+  answerDetail: { type: String, default: "" },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
   },
 })
-
 const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
 
+const answerText = computed<string>(
+  () =>
+    props.options.find((option) => option.value === props.answer)?.text ??
+    props.answer,
+);
+
+
+
+/* Changement des états en fonction de value */
 watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      model.value = QuestionState.Empty /*Si la valeur devient null, l'état devient Empty*/
+      model.value = QuestionState.Empty 
     } else {
       model.value = QuestionState.Fill /*Sinon, l'état devient Fill*/
     }
@@ -60,5 +69,14 @@ watch(model, (newModel) => {
     <label class="form-check-label" :for="`${props.id}-${option.value}`">
       {{ option.text }}
     </label>
+  </div>
+  <div
+    v-if="model === QuestionState.Correct || model === QuestionState.Wrong"
+  >
+    <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
+    <p v-else class="text-danger">
+      Faux ! La réponse était : {{ answerText }}
+    </p>
+    <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>

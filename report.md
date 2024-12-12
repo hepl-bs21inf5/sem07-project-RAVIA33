@@ -4,71 +4,70 @@
 
 ## Temps passé
 
-| **Tâche** | **Temps estimé** | **Temps passé** | **Remarque**                                                             |
-| --------- | ---------------- | --------------- | ------------------------------------------------------------------------ |
-| Vue.js    | 15min            | 20              | Attention dossiers cachés dans quizz "option+shift+"." pour les afficher |
+| **Tâche** | **Temps estimé** | **Temps passé** |
+| --------- | ---------------- | --------------- |
+| Vue.js    | 15min            | 20              |
 | Bootstrap | 15 min           | 30              |
-| Quiz      | 1h30             | 2h30            | Plus facile de modifier icone et couleur en inspectant élément           |
+| Quiz      | 1h30             | 2h30            |
 | Rapport   | 30 min           | 10 min          |
-|           |                  | -               |
 |           |                  |                 |
+
+| **Tâche** : | **Remarque**                                                        |
+| ----------- | ------------------------------------------------------------------- |
+| Bootstrap : | il est plus facile de modifier les couleurs en inspectant l'élément |
 
 ## Difficultés rencontrées et solutions
 
-| **Tâches** | **Difficultés rencontrées**                                          | **Solutions trouvées**             |
-| ---------- | -------------------------------------------------------------------- | ---------------------------------- |
-| Vue.js     | Attentions Dossiers "invisibles" cachés dans quizz                   | option+shift+"." pour les afficher |
-| Bootstrap  | Rien de particulier                                                  |                                    |
-| Quiz       | Problème de compréhension au niveau de la structure script- Template | Poser des questions, tester        |
-|            | Ecrit 2 script au début Aïe !                                        | faire des recherches               |
-| Rapport    |                                                                      |                                    |
-|            |                                                                      |                                    |
+| **Tâches** | **Difficultés rencontrées**                                                                        | **Solutions trouvées**                           |
+| ---------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| Vue.js     | Attentions Dossiers "invisibles" cachés dans quizz                                                 | option+shift+"." pour les afficher               |
+| Quiz       | Problème de compréhension au niveau de la structure script- Template Ecrit 2 script au début Aïe ! | Poser des questions, tester faire des recherches |
+|            | Ecrit 2 script au début Aïe !                                                                      | faire des recherches                             |
 
-## Explications et réflexions sur le code
+# Explications et réflexions sur le code
 
-## Expliquez le rôle des fichiers suivants
+## Le rôle des fichiers suivants :
 
-## **Main.ts**
+**Main.ts**
 
-|Le fichier main.ts a pour rôle d'initialiser l'application, en important Vue, bootstrap, et les routes, à savoir, les différentes pages que l'utilisateur peut visiter.|
-|Il crée une instance de l'application Vue, lui fait utiliser les routeurs définits|
-|et la rattache à un élément html "#app|
+Le fichier main.ts a pour rôle d'initialiser l'application, en important Vue, Bootstrap, et les routes, à savoir, les différentes pages que l'utilisateur peut visiter.
+Il crée une instance de l'application Vue, lui fait utiliser les routeurs définits et la rattache à un élément html "#app
 
-## **Main.css**
+**Main.css**
 
 A pour rôle de personnaliser l'apparence de l'application, comme la couleur, ou d'autres éléments visuels
 
-## **App.vue**
+**App.vue**
 
 Le fichier App.vue est le composant racine de l'application Vue, il inclut la structure de base de l'application, plus précisément
-la barre de naviguation. Et il utilise les routes définies pour afficher le contenue de chaque page (ex : HomeView.vue, AboutView,)
+la barre de naviguation. Et il utilise les routes définies pour afficher le contenue de chaque page (ex : HomeView.vue, AboutView
 
-## **Router/index.ts**
+**Router/index.ts**
 
 Il configure les routes, définit quelles vues sont associées avec quelle vue sont associées à quelle URL, ici en particulier pour les pages HomeView et AboutView
 (pages "quiz" et "à propos" sur le site)
 
-## **AboutView.vue**
+**AboutView.vue**
 
 Représente la page "A propos" de l'application. Ce genre de page à pour but de transmettre des informations, par exemple sur le projet, ou l'équipe
 
-## **HomeView.vue**
+**HomeView.vue**
 
 Représente la page d'acceuil de l'application, et renvoi grâce à un lien, au quiz
 
-## **QuizForm.vue**
+**QuizForm.vue**
 
 Ce composant contient la forme du quizz, , à savoir les questions, les options de réponses, la sélection des réponses, le calcul du score,
 et l'affichage des résultats. Il inclue aussi les boutons "Terminer" et "Rénitialiser et gère logiquement les états du quizz."
 
 ## Dans le fichier Quizform.vue
 
-## **Quelles sont les similarités et les différences entre ref et computed**|
+## **Quelles sont les similarités et les différences entre ref et computed**
 
 ref et computed sont tout deux des fonctionnalités de Vue destinées à gérer des données réactives, lorsque les valeur de ref ou computed changent,
 les parties dépendantes de ces valeurs se mettent automatiquement à jour dans l'interface. La différence est que ref crée des variables réactives
 qui peuvent être modifiée instantanément, on l'utilise donc plus pour des valeurs qui vont beaucoup changer, comme par exemple une réponse
-sélectionnée par l'utilisateur. Computed est plûtot utilisé pour définir des valeurs basées sur d'autres variables réactives, ces valeurs
+sélectionnée par l'utilisateur. Computed est plutôt utilisé pour définir des valeurs basées sur d'autres variables réactives, ces valeurs
 sont recalculées automatiquement lorsque les variables sources changent.
 
 ## **Que se passe-t-il lorsqu'on clique sur le bouton "Terminer"**
@@ -95,8 +94,6 @@ de rendre le jeu plus stimulant. Commme améliorations on pourrait donner des fe
 et vers si correctes, on pourrait fournir des explications aux réponses, on pourrait adapter le design afin qu'ils soit compatible avec téléphone
 et tablettes, ou ajouter des thèmes personnalisables, par exemple mode sombre/clair
 
-option.shift.f
-
 # Projet semaine : 2
 
 [Schmidt Ravia]
@@ -109,21 +106,23 @@ option.shift.f
 | Questiontext     | 30 min           | 4h              | Enormément de mal à comprendre comment correctement lier mes variables, difficultés à répondre a la question également. |
 | QuestionCheckbox | 1h               | 1h              | Bon, finalement optionelle, je ne l'avais pas vu                                                                        |
 | API              | 1h               | 1h30            |                                                                                                                         |
-|                  |                  | -               |                                                                                                                         |
+|                  |                  |                 |                                                                                                                         |
 |                  |                  |                 |                                                                                                                         |
 
 ## Difficultés rencontrées et solutions
 
-| **Tâches**    | **Difficultés rencontrées**                                                                              | **Solutions trouvées**                                                                                                                                            |
-| ------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| QuestionRadio | Pas sûre au début de comment modifier le code dans Quizform                                              | Tester selon modèl et voir si ça marche                                                                                                                           |
-| Questiontext  | Pourquoi le placeholder ne s'affiche pas ?                                                               |                                                                                                                                                                   |
-|               | Une fois afficher, lorsque rempli, impossible de cliquer sur terminer                                    | modifier correctement les propriétés et conditions                                                                                                                |
-|               | Comment savoir quel v-model choisir ?                                                                    | tout tester, voir ce qui marche...                                                                                                                                |
-|               | comme placeholder optionnelle, required-false ne marche pas vraiment car on ne peut cliquer sur terminer | Optionnelle oui, mais pas de valeure, donc pas de possibilité de mettre terminer : mettre une valeur par défaut, comment ? Vue.js nous donne le mot clé "Default" |
-|               | complications pour rendre optionnelle                                                                    | revenir en arrière et se concentrer sur consts filles                                                                                                             |
-|               | Est-ce que c'est normal que je puisse modifier les reponses après avoir cliqué sur terminé ?             |                                                                                                                                                                   |
-| API           | Après avoir suivi à la lettre les instructions, le code ne marche pas                                    | problème dans router, attention à l'othographe                                                                                                                    |
+| **Tâches**    | **Difficultés rencontrées**                                                                              | **Solutions trouvées**                                                             |
+| ------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| QuestionRadio | Pas sûre au début de comment modifier le code dans Quizform                                              | Tester selon modèl et voir si ça fonctionne                                        |
+| marche        |
+| Questiontext  | Pourquoi le placeholder ne s'affiche pas ?                                                               |                                                                                    |
+|               | Une fois afficher, lorsque rempli, impossible de cliquer sur terminer                                    | modifier correctement les propriétés et conditions                                 |
+|               | Comment savoir quel v-model choisir ?                                                                    | tout tester, voir ce qui marche...                                                 |
+|               | comme placeholder optionnelle, required-false ne marche pas vraiment car on ne peut cliquer sur terminer | Optionnelle oui, mais pas de valeure, donc pas de possibilité de mettre terminer : |
+|               |                                                                                                          | mettre une valeur par défaut, comment ? Vue.js nous donne le mot clé "Default"     |
+|               | complications pour rendre optionnelle                                                                    | revenir en arrière et se concentrer sur consts filles                              |
+|               | Est-ce que c'est normal que je puisse modifier les reponses après avoir cliqué sur terminé ?             | oui pour l'instant                                                                 |
+| API           | Après avoir suivi à la lettre les instructions, le code ne marche pas                                    | problème dans router, attention à l'othographe                                     |
 
 ## Explications et réflexions sur le code
 
@@ -160,11 +159,31 @@ vérifiant que patte.value n'est pas nulle
 ## Explications et réflexions sur le code
 
 **À quoi sert l'option immediate: true dans le watch ? Que se passe-t-il si on l'enlève ou si on met immediate: false ?**
-immediate: true fait en sorte de forcer l'exécution de l'observateur watsh, si on met immediate:false, l'affichage des trus/false selon les questions
+immediate: true fait en sorte de forcer l'exécution de l'observateur watch, si on met immediate:false, l'affichage des trus/false selon les questions
 s'affiche sous forme de liste vide, c'est à dire que tant que l'utilisateur ne saisit pas une réponse, le watcher ne ns'execute pas, l'execution
 n'est donc plus immédiate au début du quizz, mais se met en marque au fur et a mesur qu'une question est répondue
 
 **Proposer une autre manière de calculer le score et comparer les deux méthodes**
+
+    def function submit(event: Event): void {
+        event.preventDefault()
+        let points = 0
+        if (cheval.value === 'blanc') {
+            points++
+            }
+        if (patte.value === '4') {
+            points++
+        }
+        if (capitale.value === 'berne') {
+        points++
+        }
+        if (filled.value) {
+            if (points == 3) {
+                alert(`Félicitation !! Vous avez fait tout juste !`)
+            } else {
+                alert(`Vous avez fait ${points} point sur 3 !`)
+                }
+    }
 
 ## **Suite du projet**
 
@@ -172,22 +191,29 @@ option.shift.f
 
 # Projet semmaine : 4 - 5
 
-[Schmidt Rava ]
+[Schmidt Rava]
 
 # Temps passé
 
-| **Tâches**         | **Temps estimé** | **Temps passé** | **Remarque** |
-| ------------------ | ---------------- | --------------- | ------------ |
-| États              | 1h30             | 1h15            |              |
-| Question Rapport 1 | 30 min           | 15 min          |              |
-| Question Rapport 2 | 30 min           |                 |              |
-| Boutons            | 1h30             | 1h05            |              |
-| Réponses immuables | 1h               |                 |              |
-|                    |                  |                 |              |
+| **Tâches**         | **Temps estimé** | **Temps passé** |
+| ------------------ | ---------------- | --------------- |
+| États              | 1h30             | 1h15            |
+| Question Rapport 1 | 30 min           | 15 min          |
+| Question Rapport 2 | 30 min           |                 |
+| Boutons            | 1h30             | 1h05            |
+| Réponses immuables | 1h               | 5 min           |
+|                    |                  |                 |
+
+**Remarques**
+
+- QuestionState : contient les états possibles pour une question
+- Fonction watch : Si la valeur est null, l'état est Empty, Sinon l'état devient Fill,
+- Dans submit : map() parcoursl les valeurs de questionStates et leur donne la valeur Submit
 
 | **Tâches**         | **Difficultés rencontrées**                                  | **Solutions trouvées** |
 | ------------------ | ------------------------------------------------------------ | ---------------------- |
 | Etats              | "from '@/utils/models'" souligné en rouge dans questionRadio |                        |
+|                    |                                                              |                        |
 | Question Rapport 1 |                                                              |                        |
 | Question rapport 2 |                                                              |                        |
 | Boutons            |                                                              |                        |
@@ -209,4 +235,48 @@ model.value = QuestionState.Wrong;
 }
 
 **Comment pourrait-on réécrire autrement la logique du watch sur value ?**
-utiliser computed ? à repondre...
+une chose qu'on peut modifier dans watch
+
+Comme modèle est maintenant de type boolean, on pourra faire indiquer à chaque question si la réponse est correct ou non
+
+## Projet semaine 6
+
+| **Tâches**                                  | **Temps estimé** | **Temps passé** | **Remarques** |
+| ------------------------------------------- | ---------------- | --------------- | ------------- |
+| Ajouter des questions et les personnalisées | 30 min           | 1h              |               |
+| Réponses détaillées                         | 1h               | 2h              |               |
+| Question rapport 1                          | 15 min           | 30 min          |               |
+| Question Rapport 2                          | 15min            |                 |               |
+| Style                                       | 30min            |                 |               |
+
+| **Tâches**          | **Difficultés rencontrées** | **Solutions Trouvées**                                                              |
+| ------------------- | --------------------------- | ----------------------------------------------------------------------------------- |
+| Réponses détaillées | computed() non reconnue     | l'ajouter dans l'import "import { ref, computed, watch, type PropType } from 'vue'" |
+|                     |                             |                                                                                     |
+|                     |                             |                                                                                     |
+|                     |                             |                                                                                     |
+
+# Questions rapport :
+
+Ajouter ce computed dans QuestionRadio.vue :
+
+    const answerText = computed<string>(
+    () =>
+        props.options.find((option) => option.value === props.answer)?.text ??
+        props.answer,
+    );
+
+Remplacer {{ props.answer }} par {{ answerText }} dans le template.
+
+**Expliquer pourquoi on a fait ce changement ainsi que le code du computed.** :
+Texte computed : Dans props.opions on cherche à l'aide de find() une valeur qui correspond à la réponse props.answer. Si on trouve une telle valeur, son text est récupéré pour représenter answerText. Sinon on utilise la valeur props.answer pour answertext.
+
+On le fait car souvent, il y a un décalage entre les value, qui sont souvent des mots clés, courts, et les mêmes peu importe les langues, et leur texte, qui représente l'affichage réel que l'utilisateur voit. Donc on préfère prendre {{ answerText }} dans le template, puisque il représente vraiment la manière dont la valeur est affichée (donc différente par exemple selon les langues), et c'est comme cela qu'on aimerait la réafficher dans notre commentaire : faux ! la réponse était ...
+
+**Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration**
+Un petit trait, caractéristique lorsque une explication, s'affiche. Ce n'est pas satisfaisant car l'on n'aimerait pas qu'il s'affiche, lorsque l'on ne met pas de texte explicatif pour une question.cn
+
+Dans la <p un élément de class="blockquote-footer" afifiche le petit trait. on doit ajoujer une condition qui fait qu'il s'affiche seulement si answerDetail n'est pas une chaîne vide
+
+    <p class="blockquote-footer">{{ props.answerDetail }}</p> #devient :
+    <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
