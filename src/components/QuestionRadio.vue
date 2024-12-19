@@ -80,3 +80,14 @@ watch(model, (newModel) => {
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
+<style scoped>
+  .text-danger {
+    color: purple !important;
+  }
+  .text-success {
+    color : turquoise !important ;
+  }
+  .form-check-input {
+    color : gray !important;
+  }
+</style>

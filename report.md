@@ -246,8 +246,8 @@ Comme modèle est maintenant de type boolean, on pourra faire indiquer à chaque
 | Ajouter des questions et les personnalisées | 30 min           | 1h              |               |
 | Réponses détaillées                         | 1h               | 2h              |               |
 | Question rapport 1                          | 15 min           | 30 min          |               |
-| Question Rapport 2                          | 15min            |                 |               |
-| Style                                       | 30min            |                 |               |
+| Question Rapport 2                          | 15min            | 15 min          |               |
+| Style                                       | 30min            | 30 min          |               |
 
 | **Tâches**          | **Difficultés rencontrées** | **Solutions Trouvées**                                                              |
 | ------------------- | --------------------------- | ----------------------------------------------------------------------------------- |
@@ -274,9 +274,17 @@ Texte computed : Dans props.opions on cherche à l'aide de find() une valeur qui
 On le fait car souvent, il y a un décalage entre les value, qui sont souvent des mots clés, courts, et les mêmes peu importe les langues, et leur texte, qui représente l'affichage réel que l'utilisateur voit. Donc on préfère prendre {{ answerText }} dans le template, puisque il représente vraiment la manière dont la valeur est affichée (donc différente par exemple selon les langues), et c'est comme cela qu'on aimerait la réafficher dans notre commentaire : faux ! la réponse était ...
 
 **Que se passe-t-il lorsqu'on ne met pas de valeur à answer-detail ? Est-ce satisfaisant ? Si ce n'est pas le cas, proposer une amélioration**
-Un petit trait, caractéristique lorsque une explication, s'affiche. Ce n'est pas satisfaisant car l'on n'aimerait pas qu'il s'affiche, lorsque l'on ne met pas de texte explicatif pour une question.cn
 
-Dans la <p un élément de class="blockquote-footer" afifiche le petit trait. on doit ajoujer une condition qui fait qu'il s'affiche seulement si answerDetail n'est pas une chaîne vide
+Un petit trait, caractéristique lorsque une explication, s'affiche. Ce n'est pas satisfaisant car l'on n'aimerait pas qu'il s'affiche, lorsque l'on ne met pas de texte explicatif pour une question.
+
+Dans la baslise <p un élément de class="blockquote-footer" afifiche le petit trait. on doit ajoujer une condition qui fait qu'il s'affiche seulement si answerDetail n'est pas une chaîne vide
 
     <p class="blockquote-footer">{{ props.answerDetail }}</p> #devient :
     <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
+
+### Semaine 7
+
+| **Tâche**                  | **Temps estimé** | **Temps passé** |
+| -------------------------- | ---------------- | --------------- |
+| QuestionCheckbox           | 2h               | 1h              |
+| Amelioration question Text | 1h30            |                 |

@@ -1,44 +1,4 @@
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-import QuestionRadio from '@/components/QuestionRadio.vue'
-import QuestionText from '@/components/QuestionText.vue'
-import QuestionCheckbox from './QuestionCheckbox.vue'
-import { QuestionState } from '@/utils/models'
-import type { vModelCheckbox } from 'vue'
-
-/*Variables d'états des questions et du score*/
-const questionStates = ref<QuestionState[]>([])
-
-const filled = computed<boolean>(() =>
-  questionStates.value.every((state) => state === QuestionState.Fill),
-)
-const submitted = computed<boolean>(() =>
-  questionStates.value.every(
-    (state) => state === QuestionState.Correct || state === QuestionState.Wrong,
-  ),
-)
-const score = computed<number>(
-  () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
-)
-const totalScore = computed<number>(() => questionStates.value.length)
-
-/* Fonctions appliquées aux boutons "Terminer" et Réinitialiser : */
-function submit(event: Event): void {
-  event.preventDefault()
-  questionStates.value = questionStates.value.map(() => QuestionState.Submit)
-}
-function reset(event: Event): void {
-  event.preventDefault()
-  questionStates.value = questionStates.value.map(() => QuestionState.Empty)
-}
-</script>
-
-<!--Questions du quiz-->
-<template>
-  <form>
-    <!-- Question 1 : Course de vélo -->
-
-    <QuestionRadio
+<QuestionRadio
       id="course-velo"
       v-model="questionStates[0]"
       answer="deuxième"
@@ -51,6 +11,7 @@ function reset(event: Event): void {
       ]"
       answer-detail="En dépassant le deuxième, il prend la position de celui-ci. "
     />
+    
 
     <!-- Question 2 : Clavier numérique -->
     <QuestionText
@@ -171,37 +132,3 @@ function reset(event: Event): void {
       text="Je détruis tout sur mon passage mais boire de l'eau me tue, je n'ai pas de poumons mais manquer d'air me tue, qui suis-je ?"
       placeholder="Veuillez choisir une réponse"
     />
-    <QuestionCheckbox
-      id="'questioncheckbox'"
-      v-model="questionStates[12]"
-      text="Quel(s) fruit(s) aimez-vous ?'"
-      :answer="['apple', 'banana']"
-      :options="[
-        { value: 'apple', text: 'Pomme' },
-        { value: 'banana', text: 'Banane' },
-        { value: 'cherry', text: 'Cerise' },
-        { value: 'orange', text: 'Orange' },
-      ]"
-    />
-
-    <!-- Boutons "Terminer" et "Réinitialiser" -->
-    <button class="btn btn-primary" :class="{ disabled: !filled }" @click="submit">Terminer</button>
-    <button
-      class="btn btn-primary"
-      :disabled="questionStates.some((state) => state === QuestionState.Empty)"
-      @click="reset"
-    >
-      Réinitialiser
-    </button>
-
-    <!-- À utiliser pour vérifier que la logique d'état fonctionne : <div>Debug états : {{ questionStates }}</div>-->
-
-    <!--Affichage du score-->
-    <div v-if="submitted">Score : {{ score }} / {{ totalScore }}</div>
-  </form>
-</template>
-<style scoped>
-.btn btn-primary {
-  color: gray !important;
-}
-</style>

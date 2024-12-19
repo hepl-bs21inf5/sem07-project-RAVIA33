@@ -10,7 +10,7 @@ const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   placeholder: { type: String, required: true },
-  answer: { type: String, required: true },
+  answer: { type: Array as PropType<string[]>, required: true },
   answerDetail: { type: String, default: "" },
 })
 const value = ref<string | null>(null)
@@ -27,13 +27,23 @@ watch(
   },
   { immediate: true },
 )
+
 watch(model, (newModel) => {
   if (newModel === QuestionState.Submit) {
-    model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
+    // Normalisation des réponses de l'utilisateur et des bonnes réponses
+    const normalizedValue = (value.value?.trim().toLowerCase() || '')
+    const normalizedAnswers = props.answer.map((ans) => ans.toLowerCase())
+
+    if (normalizedAnswers.includes(normalizedValue)) {
+      model.value = QuestionState.Correct
+    } else {
+      model.value = QuestionState.Wrong
+    }
   } else if (newModel === QuestionState.Empty) {
     value.value = null
   }
 })
+
 
 </script>
 
@@ -53,8 +63,19 @@ watch(model, (newModel) => {
   >
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
     <p v-else class="text-danger">
-      Faux ! La réponse était : {{ props.answer }}
+      Faux ! La réponse était : {{ props.answer[0] }}
     </p>
     <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
 </template>
+<style scoped>
+  .text-danger {
+    color: purple !important;
+  }
+  .text-success {
+    color : turquoise !important ;
+  }
+  .form-check {
+    color : grey !important;
+  }
+</style>
