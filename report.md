@@ -285,6 +285,11 @@ Dans la baslise <p un élément de class="blockquote-footer" afifiche le petit t
 ### Semaine 7
 
 | **Tâche**                  | **Temps estimé** | **Temps passé** |
-| -------------------------- | ---------------- | --------------- |
-| QuestionCheckbox           | 2h               | 1h              |
-| Amelioration question Text | 1h30            |                 |
+| -------------------------- | ---------------- | --------------- | --- |
+| QuestionCheckbox           | 2h               | 2h10            |
+| Amelioration question Text | 1h30             | 1h              |
+| Style                      | 30               | 25              |
+| Déploiement                | 30               |                 |     |
+
+
+https://hepl-bs21inf5.github.io/sem07-project-RAVIA33/
