@@ -284,12 +284,13 @@ Dans la baslise <p un élément de class="blockquote-footer" afifiche le petit t
 
 ### Semaine 7
 
-| **Tâche**                  | **Temps estimé** | **Temps passé** |
-| -------------------------- | ---------------- | --------------- | --- |
-| QuestionCheckbox           | 2h               | 2h10            |
-| Amelioration question Text | 1h30             | 1h              |
-| Style                      | 30               | 25              |
-| Déploiement                | 30               |                 |     |
-
+| **Tâche**                  | **Temps estimé** | **Temps passé** | **Remarques**                                                                                                   |
+| -------------------------- | ---------------- | --------------- | --------------------------------------------------------------------------------------------------------------- | --- |
+| QuestionCheckbox           | 2h               | 2h10            |                                                                                                                 |
+| Amelioration question Text | 1h30             | 1h              |                                                                                                                 |
+| Style                      | 30               | 25              |                                                                                                                 |
+| Déploiement                | 30               |                 |                                                                                                                 |
+| style personnalisé         | 1h               | 50 min          | couleurs rose pastelle, bouton score, espacement boutons, style des questions avec bootstrap                    |
+| Personalisation aboutView  | 15 min           | 10              | plus rapide a gérer avec l'IA, car bonnes idées et créatif avec bootstrap : utilisation de card, symboles etc.. |     |
 
 https://hepl-bs21inf5.github.io/sem07-project-RAVIA33/

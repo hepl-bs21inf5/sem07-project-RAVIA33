@@ -8,7 +8,7 @@ const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   answer: { type: String, required: true } /*answer contient la bonne réponse*/,
-  answerDetail: { type: String, default: "" },
+  answerDetail: { type: String, default: '' },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
@@ -17,19 +17,15 @@ const props = defineProps({
 const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
 
 const answerText = computed<string>(
-  () =>
-    props.options.find((option) => option.value === props.answer)?.text ??
-    props.answer,
-);
-
-
+  () => props.options.find((option) => option.value === props.answer)?.text ?? props.answer,
+)
 
 /* Changement des états en fonction de value */
 watch(
   value,
   (newValue) => {
     if (newValue === null) {
-      model.value = QuestionState.Empty 
+      model.value = QuestionState.Empty
     } else {
       model.value = QuestionState.Fill /*Sinon, l'état devient Fill*/
     }
@@ -51,43 +47,49 @@ watch(model, (newModel) => {
 </script>
 
 <template>
-  {{ props.text }}
-  <div v-for="option in props.options" :key="option.value" class="form-check">
-    <input
-      :id="`${props.id}-${option.value}`"
-      v-model="value"
-      class="form-check-input"
-      type="radio"
-      :name="props.id"
-      :value="option.value"
-      :disabled="
-      model === QuestionState.Submit || 
-      model === QuestionState.Correct || 
-      model === QuestionState.Wrong
-    "
-    />
-    <label class="form-check-label" :for="`${props.id}-${option.value}`">
-      {{ option.text }}
-    </label>
+  <div class="mb-4 p-3 border rounded bg-white">
+    {{ props.text }}
+    <div v-for="option in props.options" :key="option.value" class="form-check">
+      <input
+        :id="`${props.id}-${option.value}`"
+        v-model="value"
+        class="form-check-input"
+        type="radio"
+        :name="props.id"
+        :value="option.value"
+        :disabled="
+          model === QuestionState.Submit ||
+          model === QuestionState.Correct ||
+          model === QuestionState.Wrong
+        "
+      />
+      <label class="form-check-label" :for="`${props.id}-${option.value}`">
+        {{ option.text }}
+      </label>
+    </div>
   </div>
-  <div
-    v-if="model === QuestionState.Correct || model === QuestionState.Wrong"
-  >
+  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
-    <p v-else class="text-danger">
-      Faux ! La réponse était : {{ answerText }}
-    </p>
+    <p v-else class="text-danger">Faux ! La réponse était : {{ answerText }}</p>
     <p class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
+  <div class="spacer"></div>
 </template>
 <style scoped>
-  .text-danger {
-    color: purple !important;
-  }
-  .text-success {
-    color : turquoise !important ;
-  }
-  .form-check-input {
-    color : gray !important;
-  }
+.text-danger {
+  color: #975774 !important;
+}
+.text-success {
+  color: #e0a6ae !important ;
+}
+.form-check-input {
+  color: gray !important;
+}
+.spacer {
+  margin: 20px 0;
+}
+.form-check-input:checked {
+  background-color: pink; /* Change la couleur de fond du rond */
+  border-color: pink; /* Change la couleur de la bordure */
+}
 </style>

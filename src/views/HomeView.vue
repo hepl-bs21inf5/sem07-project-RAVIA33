@@ -4,7 +4,7 @@
 
 <template>
   <div class="container mt-3">
-    <h1>Quiz</h1>
+    
     <QuizForm />
   </div>
 </template>

@@ -7,12 +7,14 @@ const checkedRespsonse = ref([])
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
-  answer: { type : Array as PropType<Array<String>>, required: true } /*answer contient la bonne réponse*/,
-  answerDetail: { type: String, default: "" },
+  answer: {
+    type: Array as PropType<Array<String>>,
+    required: true,
+  } /*answer contient la bonne réponse*/,
+  answerDetail: { type: String, default: '' },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
-
   },
 })
 const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
@@ -37,7 +39,7 @@ watch(
       model.value = QuestionState.Fill
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 const answerTexts = computed(() => {
@@ -58,32 +60,43 @@ watch(model, (newModel) => {
     checkedRespsonse.value = [] // Réinitialise les cases cochées
   }
 })
-
 </script>
 <template>
-  <div>{{ props.text }}
-</div>
-  <div v-for="option in props.options" :key="option.value" class="form-check">
-    <input
-      :id="`${props.id}-${option.value}`"
-      v-model="checkedRespsonse"
-      class="form-check-input"
-      type="checkbox"
-      :value="option.value"
-      :disabled="model === QuestionState.Correct || model === QuestionState.Wrong"
-    />
-    <label class="form-check-label" :for="`${props.id}-${option.value}`">
-      {{ option.text }}
-    </label>
+  <div class="mb-4 p-3 border rounded bg-white">
+    <div>{{ props.text }}</div>
+    <div v-for="option in props.options" :key="option.value" class="form-check">
+      <input
+        :id="`${props.id}-${option.value}`"
+        v-model="checkedRespsonse"
+        class="form-check-input"
+        type="checkbox"
+        :value="option.value"
+        :disabled="model === QuestionState.Correct || model === QuestionState.Wrong"
+      />
+      <label class="form-check-label" :for="`${props.id}-${option.value}`">
+        {{ option.text }}
+      </label>
+    </div>
   </div>
-  <div
-    v-if="model === QuestionState.Correct || model === QuestionState.Wrong"
-  >
+  <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
-    <p v-else class="text-danger">
-      Faux ! La réponse était : {{ answerTexts }}
-    </p>
+    <p v-else class="text-danger">Faux ! La réponse était : {{ answerTexts }}</p>
     <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
+  <div class="spacer"></div>
 </template>
-
+<style scoped>
+.spacer {
+  margin: 20px 0;
+}
+.form-check-input:checked {
+  background-color: pink; /* Change la couleur de fond du rond */
+  border-color: pink; /* Change la couleur de la bordure */
+}
+.text-danger {
+  color: #975774 !important;
+}
+.text-success {
+  color: #e0a6ae !important ;
+}
+</style>
