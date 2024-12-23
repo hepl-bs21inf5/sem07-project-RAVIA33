@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import QuestionRadio from "@/components/QuestionRadio.vue";
-  import { reactive, ref } from "vue";
+  import { computed, reactive, ref } from "vue";
 
   const questions = ref<
     {
@@ -9,7 +9,10 @@
       incorrect_answers: string[];
     }[]
   >([]);
+
+  
   const answers = reactive<{ [key: number]: string | null }>({});
+  
 
   fetch("https://opentdb.com/api.php?amount=10&type=multiple")
     .then((response) => response.json())

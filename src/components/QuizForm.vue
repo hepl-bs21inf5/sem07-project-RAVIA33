@@ -45,12 +45,13 @@ function reset(event: Event): void {
       answer="deuxième"
       text="1. Lors d'une course de vélo, un cycliste double le deuxième. Quelle position occupe-t-il alors ?"
       :options="[
-        { value: 'premier', text: 'Le premier' },
-        { value: 'deuxième', text: 'Le deuxième' },
-        { value: 'troisième', text: 'Le troisième' },
-        { value: 'dernier', text: 'Le dernier' },
+        { value: 'premier', text: 'Premier' },
+        { value: 'deuxième', text: 'Deuxième' },
+        { value: 'troisième', text: 'Troisième' },
+        { value: 'dernier', text: 'Dernier' },
       ]"
       answer-detail="En dépassant le deuxième, il prend la position de celui-ci. "
+  
     />
 
     <QuestionText
@@ -83,6 +84,7 @@ function reset(event: Event): void {
         { value: '8', text: '8' },
       ]"
       answer-detail="Bien qu'il y en aient qui partent nager, ceux-ci restent dans l'étang. Seul ceux qui meurent ne sont plus."
+      :useSelect="true"
     />
    
     <QuestionText

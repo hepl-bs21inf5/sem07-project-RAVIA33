@@ -13,6 +13,7 @@ const props = defineProps({
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
   },
+  useSelect: { type: Boolean, default: false },
 })
 const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
 
@@ -48,24 +49,34 @@ watch(model, (newModel) => {
 
 <template>
   <div class="mb-4 p-3 border rounded bg-white">
-    {{ props.text }}
-    <div v-for="option in props.options" :key="option.value" class="form-check">
-      <input
-        :id="`${props.id}-${option.value}`"
+    <label>{{ props.text }}</label>
+    <div v-if="props.useSelect">
+      <select
         v-model="value"
-        class="form-check-input"
-        type="radio"
-        :name="props.id"
-        :value="option.value"
-        :disabled="
-          model === QuestionState.Submit ||
-          model === QuestionState.Correct ||
-          model === QuestionState.Wrong
-        "
-      />
-      <label class="form-check-label" :for="`${props.id}-${option.value}`">
-        {{ option.text }}
-      </label>
+        :id="props.id"
+        class="form-select"
+        aria-label="Sélectionner une réponse"
+      >
+        <option disabled value="">Veuillez choisir une réponse</option>
+        <option v-for="option in props.options" :key="option.value" class="form-check">
+          {{ option.text }}
+        </option>
+      </select>
+    </div>
+    <div v-else>
+      <div v-for="option in props.options" :key="option.value" class="form-check">
+        <input
+          :id="`${props.id}-${option.value}`"
+          v-model="value"
+          class="form-check-input"
+          type="radio"
+          :name="props.id"
+          :value="option.value"
+        />
+        <label class="form-check-label" :for="`${props.id}-${option.value}`">
+          {{ option.text }}
+        </label>
+      </div>
     </div>
   </div>
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
