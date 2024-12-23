@@ -115,10 +115,11 @@ function reset(event: Event): void {
     <QuestionText
       id="aujourdhui"
       v-model="questionStates[7]"
-      :answer="['Aujourd\'hui']"
+      :answer="['Aujourd\'hui', 'Aujourd’hui', 'Aujourd`hui', 'Aujourd‘hui']"
       text="8. Hier je fus, demain je serai. Qui suis-je ?"
       placeholder="Veuillez choisir une réponse"
     />
+    
   
     <QuestionText
       id="moulin"

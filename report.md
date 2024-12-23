@@ -28,16 +28,18 @@
 
 ## Le rôle des fichiers suivants :
 
-**Main.ts**
+## **Main.ts**
 
 Le fichier main.ts a pour rôle d'initialiser l'application, en important Vue, Bootstrap, et les routes, à savoir, les différentes pages que l'utilisateur peut visiter.
 Il crée une instance de l'application Vue, lui fait utiliser les routeurs définits et la rattache à un élément html "#app
 
-**Main.css**
+---
+
+## **Main.css**
 
 A pour rôle de personnaliser l'apparence de l'application, comme la couleur, ou d'autres éléments visuels
 
-**App.vue**
+## **App.vue**
 
 Le fichier App.vue est le composant racine de l'application Vue, il inclut la structure de base de l'application, plus précisément
 la barre de naviguation. Et il utilise les routes définies pour afficher le contenue de chaque page (ex : HomeView.vue, AboutView
@@ -47,15 +49,15 @@ la barre de naviguation. Et il utilise les routes définies pour afficher le con
 Il configure les routes, définit quelles vues sont associées avec quelle vue sont associées à quelle URL, ici en particulier pour les pages HomeView et AboutView
 (pages "quiz" et "à propos" sur le site)
 
-**AboutView.vue**
+## **AboutView.vue**
 
 Représente la page "A propos" de l'application. Ce genre de page à pour but de transmettre des informations, par exemple sur le projet, ou l'équipe
 
-**HomeView.vue**
+## **HomeView.vue**
 
 Représente la page d'acceuil de l'application, et renvoi grâce à un lien, au quiz
 
-**QuizForm.vue**
+## **QuizForm.vue**
 
 Ce composant contient la forme du quizz, , à savoir les questions, les options de réponses, la sélection des réponses, le calcul du score,
 et l'affichage des résultats. Il inclue aussi les boutons "Terminer" et "Rénitialiser et gère logiquement les états du quizz."
