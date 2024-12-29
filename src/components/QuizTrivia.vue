@@ -29,7 +29,6 @@ const score = computed<number>(
   () => questionStates.value.filter((state) => state === QuestionState.Correct).length,
 )
 const totalScore = computed<number>(() => questionStates.value.length)
-
 const filled = computed<boolean>(() =>
   questionStates.value.every((state) => state === QuestionState.Fill),
 )
