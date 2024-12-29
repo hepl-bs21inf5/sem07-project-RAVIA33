@@ -31,6 +31,7 @@ function reset(event: Event): void {
   event.preventDefault()
   questionStates.value = questionStates.value.map(() => QuestionState.Empty)
 }
+
 </script>
 
 
@@ -119,7 +120,7 @@ function reset(event: Event): void {
       text="8. Hier je fus, demain je serai. Qui suis-je ?"
       placeholder="Veuillez choisir une réponse"
     />
-    
+
   
     <QuestionText
       id="moulin"

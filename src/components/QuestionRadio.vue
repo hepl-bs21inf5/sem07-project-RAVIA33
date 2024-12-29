@@ -16,10 +16,11 @@ const props = defineProps({
   useSelect: { type: Boolean, default: false },
 })
 const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
-
 const answerText = computed<string>(
   () => props.options.find((option) => option.value === props.answer)?.text ?? props.answer,
 )
+
+
 
 /* Changement des états en fonction de value */
 watch(
@@ -45,6 +46,10 @@ watch(model, (newModel) => {
     value.value = null
   }
 })
+
+
+
+
 </script>
 
 <template>
@@ -82,7 +87,7 @@ watch(model, (newModel) => {
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
     <p v-else class="text-danger">Faux ! La réponse était : {{ answerText }}</p>
-    <p class="blockquote-footer">{{ props.answerDetail }}</p>
+    <p v-if="props.answerDetail" class="blockquote-footer">{{ props.answerDetail }}</p>
   </div>
   <div class="spacer"></div>
 </template>
