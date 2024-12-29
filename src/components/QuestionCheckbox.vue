@@ -4,23 +4,24 @@ import { QuestionState } from '../utils/models'
 
 const model = defineModel<QuestionState>()
 const checkedRespsonse = ref([])
+
+// Définition des propriétés transmises au composant
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
   answer: {
     type: Array as PropType<Array<String>>,
     required: true,
-  } /*answer contient la bonne réponse*/,
+  },
   answerDetail: { type: String, default: '' },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
     required: true,
   },
 })
-const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
 
+// Calculer si les réponses sélectionnées par l'utilisateur sont correctes
 const isCorrect = computed<boolean>(() => {
-  // Convertir toutes les valeurs en chaînes et les normaliser
   const normalizedChecked = checkedRespsonse.value.map((val) => String(val).toLowerCase())
   const normalizedAnswers = props.answer.map((ans) => String(ans).toLowerCase())
 
@@ -57,13 +58,15 @@ watch(model, (newModel) => {
   if (newModel === QuestionState.Submit) {
     model.value = isCorrect.value ? QuestionState.Correct : QuestionState.Wrong
   } else if (newModel === QuestionState.Empty) {
-    checkedRespsonse.value = [] // Réinitialise les cases cochées
+    checkedRespsonse.value = []
   }
 })
 </script>
 <template>
   <div class="mb-4 p-3 border rounded bg-white">
+    <!-- Afficher la question -->
     <div>{{ props.text }}</div>
+    <!-- Afficher les options de réponse -->
     <div v-for="option in props.options" :key="option.value" class="form-check">
       <input
         :id="`${props.id}-${option.value}`"
@@ -78,6 +81,7 @@ watch(model, (newModel) => {
       </label>
     </div>
   </div>
+  <!-- Afficher les messages de validation -->
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
     <p v-else class="text-danger">Faux ! La réponse était : {{ answerTexts }}</p>
@@ -90,8 +94,8 @@ watch(model, (newModel) => {
   margin: 20px 0;
 }
 .form-check-input:checked {
-  background-color: pink; /* Change la couleur de fond du rond */
-  border-color: pink; /* Change la couleur de la bordure */
+  background-color: pink;
+  border-color: pink;
 }
 .text-danger {
   color: #975774 !important;

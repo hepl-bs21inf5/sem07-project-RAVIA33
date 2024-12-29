@@ -380,7 +380,7 @@ On pourrait créer d'autres pages de quizz, selon les thèmes ou la difficulté 
 :answer="['zéro', '0]"
 ```
 
-**Normalisation des réponses: on convertit les réponses de l'utilisateur et les réponses attendues en minuscules pour les comparer de manière uniforme : **
+**Normalisation des réponses: on convertit les réponses de l'utilisateur et les réponses attendues en minuscules pour les comparer de manière uniforme :**
 
 - Normalisation des réponses de l'utilisateur : on crée une liste de réponses normalisées où l'on supprime les espaces avant/après la réponse de l'utilisateur (trim), convertit les réponses en minuscules (toLowerCase), et si aucune réponse n'est saisie (value.value est null ou undefined), elle retourne une chaîne vide (|| '')
 - Normalisation des réponses attendues : on crée une liste de réponses correct normalisée en parcourant props.answer avec .map ( qui permet des itérations sur un tableau) et en utilisant la méthode .toLowerCase())
@@ -529,3 +529,4 @@ useSelect: { type: Boolean, default: false },
 
 **Autres améliorations :**
 + Importer plus de questions, et de différents niveaux (facile, moyen, dur) ou de type autre que QuestionRadio, comme  Questiontext ou encore QuestionCheckbox
++ on pourrait faire en sorte de générer un nouveau set de questions, lorsque l'on click sur réinitialiser

@@ -2,12 +2,13 @@
 import { ref, computed, watch, type PropType } from 'vue'
 import { QuestionState } from '../utils/models'
 
-/* Définition du modèle, de la proposition et de la valeur*/
 const model = defineModel<QuestionState>()
+
+// Définition des propriétés du composant
 const props = defineProps({
   id: { type: String, required: true },
   text: { type: String, required: true },
-  answer: { type: String, required: true } /*answer contient la bonne réponse*/,
+  answer: { type: String, required: true },
   answerDetail: { type: String, default: '' },
   options: {
     type: Array as PropType<Array<{ value: string; text: string }>>,
@@ -15,46 +16,41 @@ const props = defineProps({
   },
   useSelect: { type: Boolean, default: false },
 })
-const value = ref<string | null>(null) /*Stock la réponse de l'utilisateur*/
+
+// Valeur sélectionnée par l'utilisateur
+const value = ref<string | null>(null)
 const answerText = computed<string>(
   () => props.options.find((option) => option.value === props.answer)?.text ?? props.answer,
 )
 
-
-
-/* Changement des états en fonction de value */
 watch(
   value,
   (newValue) => {
     if (newValue === null) {
       model.value = QuestionState.Empty
     } else {
-      model.value = QuestionState.Fill /*Sinon, l'état devient Fill*/
+      model.value = QuestionState.Fill
     }
   },
   {
     immediate: true,
-  } /*Quand value change, watch s'execute : met en paramètre la nouvelle valeur etla compare avec la valeure correct 
-    pour mettre a jour la valeure booléenne, on oublie pas de modifier le v-model dans le template pour le lier à value */,
+  },
 )
 
 watch(model, (newModel) => {
   if (newModel === QuestionState.Submit) {
     model.value = value.value === props.answer ? QuestionState.Correct : QuestionState.Wrong
-    /*Si l'état est Submit, il deviendra Correct si la réponse est juste et Wrong sinon*/
   } else if (newModel === QuestionState.Empty) {
     value.value = null
   }
 })
-
-
-
-
 </script>
 
 <template>
   <div class="mb-4 p-3 border rounded bg-white">
+    <!-- Afficher le texte de la question -->
     <label>{{ props.text }}</label>
+    <!-- Afficher un menu déroulant si useSelect est vrai -->
     <div v-if="props.useSelect">
       <select
         v-model="value"
@@ -68,6 +64,7 @@ watch(model, (newModel) => {
         </option>
       </select>
     </div>
+    <!-- Sinon, afficher des boutons radio pour les options -->
     <div v-else>
       <div v-for="option in props.options" :key="option.value" class="form-check">
         <input
@@ -84,6 +81,7 @@ watch(model, (newModel) => {
       </div>
     </div>
   </div>
+  <!-- Afficher les messages de validation après la soumission -->
   <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
     <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
     <p v-else class="text-danger">Faux ! La réponse était : {{ answerText }}</p>
@@ -91,6 +89,7 @@ watch(model, (newModel) => {
   </div>
   <div class="spacer"></div>
 </template>
+
 <style scoped>
 .text-danger {
   color: #975774 !important;
@@ -106,6 +105,6 @@ watch(model, (newModel) => {
 }
 .form-check-input:checked {
   background-color: pink; /* Change la couleur de fond du rond */
-  border-color: pink; /* Change la couleur de la bordure */
+  border-color: pink;
 }
 </style>

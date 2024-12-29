@@ -62,6 +62,7 @@ watch(model, (newModel) => {
         model === QuestionState.Wrong
       "
     />
+    <!-- Afficher les messages de validation après la soumission -->
     <div v-if="model === QuestionState.Correct || model === QuestionState.Wrong">
       <p v-if="model === QuestionState.Correct" class="text-success">Juste !</p>
       <p v-else class="text-danger">Faux ! La réponse était : {{ props.answer[0] }}</p>
@@ -70,6 +71,7 @@ watch(model, (newModel) => {
   </div>
   <div class="spacer"></div>
 </template>
+
 <style scoped>
 .text-danger {
   color: #975774 !important;

@@ -81,6 +81,7 @@ watch(
         ]"
       />
     </div>
+    <!-- Boutons "Terminer" et "Réinitialiser" -->
     <button
       class="btn btn-rose-pastel margin-right"
       :class="{ disabled: !filled }"
